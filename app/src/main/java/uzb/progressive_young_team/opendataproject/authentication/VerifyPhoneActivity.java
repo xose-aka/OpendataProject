@@ -21,20 +21,28 @@ import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class VerifyPhoneActivity extends AppCompatActivity {
 
     private String mVerificationCode;
-
+    private String mUserName, mUserSurname, mUserPassword;
     //The edittext to input the code
     private EditText mUserEnteredCode;
 
     //firebase auth object
     private FirebaseAuth mAuth;
+    private FirebaseFirestore db;
+    private CollectionReference usersRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,15 +52,15 @@ public class VerifyPhoneActivity extends AppCompatActivity {
         mUserEnteredCode = findViewById(R.id.verification_code);
 
         mAuth = FirebaseAuth.getInstance();
-
-
         //getting mobile number from the previous activity
         //and sending the verification code to the number
         Intent intent = getIntent();
         String phone_number = intent.getStringExtra("phone_number");
         sendVerificationCode(phone_number);
 
-
+        mUserName = intent.getStringExtra("user_name");
+        mUserSurname = intent.getStringExtra("user_surname");
+        mUserPassword = intent.getStringExtra("password");
 
         //if the automatic sms detection did not work, user can also enter the code manually
         //so adding a click listener to the button
@@ -61,7 +69,7 @@ public class VerifyPhoneActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String userEnteredCode = mUserEnteredCode.getText().toString().trim();
                 if (userEnteredCode.isEmpty() || userEnteredCode.length() < 6) {
-                    mUserEnteredCode.setError("Noto'g'ri kod");
+                    mUserEnteredCode.setError("Noto'g'ri kod kiritdingiz");
                     mUserEnteredCode.requestFocus();
                     return;
                 }
@@ -83,7 +91,6 @@ public class VerifyPhoneActivity extends AppCompatActivity {
                 TimeUnit.SECONDS,   // Unit of timeout
                 VerifyPhoneActivity.this,               // Activity (for callback binding)
                 mCallbacks);
-        Toast.makeText(VerifyPhoneActivity.this, "Siz noto'g'ri kod kiritdingiz", Toast.LENGTH_SHORT).show();
     }
 
 
@@ -100,7 +107,7 @@ public class VerifyPhoneActivity extends AppCompatActivity {
             //so user has to manually enter the code
             if (code != null) {
                 mUserEnteredCode.setText(code);
-                Log.d("code", code);
+
                 //verifying the code
                 verifyVerificationCode(code);
             }
@@ -117,7 +124,6 @@ public class VerifyPhoneActivity extends AppCompatActivity {
 
             //storing the verification id that is sent to the user
             mVerificationCode = s;
-            Log.d("code", s);
         }
     };
 
@@ -136,8 +142,14 @@ public class VerifyPhoneActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+
                             //verification successful we will start the profile activity
-                            Intent intent = new Intent(VerifyPhoneActivity.this, IllnessListActivity.class);
+                            FirebaseUser firebaseUser = mAuth.getCurrentUser();
+                            String userID = firebaseUser.getUid();
+
+//                            db.collection("users").document(userID).add();
+
+                            Intent intent = new Intent(VerifyPhoneActivity.this, MainActivity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(intent);
 

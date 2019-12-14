@@ -16,5 +16,11 @@
             android:layout_height="wrap_content"
             android:text="Kasallik va Davo"
             android:id="@+id/illness_list_button"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:text="Ciqish"
+            android:id="@+id/logout"/>
     </LinearLayout>
 </RelativeLayout>

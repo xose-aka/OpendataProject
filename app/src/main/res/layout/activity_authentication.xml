@@ -7,54 +7,62 @@
     tools:context=".authentication.AuthenticationActivity">
 
     <RelativeLayout
-        android:id="@+id/relativeLayout"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@color/colorPrimary"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true" />
-
-    </RelativeLayout>
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:layout_below="@id/relativeLayout"
-        android:layout_marginTop="-50dp"/>
-
-    <RelativeLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/imageView"
         android:orientation="vertical"
         android:padding="20dp">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/title_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="25dp"
-            android:text="May I ask your phone number?"
+            android:text="Malumotlaringizni kiriting."
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
             android:textColor="@color/colorPrimary" />
+
+        <EditText
+            android:id="@+id/user_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title_view"
+            android:layout_marginTop="20dp"
+            android:drawablePadding="10dp"
+            android:hint="Ismingizni kiriting"
+            android:inputType="phone"
+            android:maxLength="20"/>
+
+        <EditText
+            android:id="@+id/user_surname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/user_name"
+            android:layout_marginTop="20dp"
+            android:drawablePadding="10dp"
+            android:hint="familiyangizni kiriting"
+            android:maxLength="20" />
+
+        <EditText
+            android:id="@+id/user_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/user_surname"
+            android:layout_marginTop="20dp"
+            android:drawablePadding="10dp"
+            android:hint="parolni kiriting"
+            android:maxLength="12" />
 
         <EditText
             android:id="@+id/phone_number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textView"
+            android:layout_below="@id/user_password"
             android:layout_marginTop="20dp"
             android:digits="0123456789"
             android:drawablePadding="10dp"
-            android:hint="enter your mobile number"
+            android:hint="telefon raqam:987654321"
             android:inputType="phone"
             android:maxLength="10" />
 
@@ -66,7 +74,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15dp"
             android:background="@color/colorPrimaryDark"
-            android:text="Continue"
+            android:text="Registratsiya qilish"
             android:textAllCaps="false"
             android:textColor="#cdd8f1" />
 
