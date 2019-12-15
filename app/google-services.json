@@ -15,7 +15,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "1063946718695-l1dr895q8gg03bgdm4kgkp9jvrd0n1ld.apps.googleusercontent.com",
+          "client_id": "1063946718695-dsudcqs5r3s513i9ec8h8upcuent6vgf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "uzb.progressive_young_team.opendataproject",
+            "certificate_hash": "c17cd00d93ee1e7d48b00d725525fa87b082d2c0"
+          }
+        },
+        {
+          "client_id": "1063946718695-hooc5tut00hurdigp8bna0c9lsnalkgs.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "uzb.progressive_young_team.opendataproject",

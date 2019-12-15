@@ -16,6 +16,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.TaskExecutors;
 import com.google.android.material.snackbar.Snackbar;
@@ -32,6 +34,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -55,6 +58,7 @@ public class VerifyPhoneActivity extends AppCompatActivity {
         mUserEnteredCode = findViewById(R.id.verification_code);
 
         mAuth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
         //getting mobile number from the previous activity
         //and sending the verification code to the number
         Intent intent = getIntent();
@@ -152,10 +156,29 @@ public class VerifyPhoneActivity extends AppCompatActivity {
                             FirebaseUser firebaseUser = mAuth.getCurrentUser();
                             String userID = firebaseUser.getUid();
 
+                            Timestamp timestamp = new Timestamp(System.currentTimeMillis());
                             User user = new User(mUserName, userID, mUserSurname,
-                                    mUserPassword, (new SimpleDateFormat("yyyy.MM.dd 'at' HH:mm:ss" ).toString()), mPhoneNumber);
-
+                                    mUserPassword, new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(timestamp), mPhoneNumber);
                             db.collection("users").document(userID).set(user);
+//                            db.collection("users").document(userID).set(user);
+//                            Map<String, Object> data = new HashMap<>();
+//                            data.put("name", "Tokyo");
+//                            data.put("country", "Japan");
+//
+//                            db.collection("users")
+//                                    .add(data)
+//                                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+//                                        @Override
+//                                        public void onSuccess(DocumentReference documentReference) {
+//                                            Log.d("firestore", "DocumentSnapshot written with ID: " + documentReference.getId());
+//                                        }
+//                                    })
+//                                    .addOnFailureListener(new OnFailureListener() {
+//                                        @Override
+//                                        public void onFailure(@NonNull Exception e) {
+//                                            Log.w("firestore", "Error adding document", e);
+//                                        }
+//                                    });
 
                             Intent intent = new Intent(VerifyPhoneActivity.this, MainActivity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

@@ -2,6 +2,7 @@ package uzb.progressive_young_team.opendataproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 import uzb.progressive_young_team.opendataproject.authentication.AuthenticationActivity;
+import uzb.progressive_young_team.opendataproject.authentication.LoginRegisterActivity;
 import uzb.progressive_young_team.opendataproject.illness_library.IllnessListActivity;
 
 import android.content.Intent;
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.logout:
                 FirebaseAuth.getInstance().signOut();
-                Intent intentLogout = new Intent(MainActivity.this, AuthenticationActivity.class);
+                Intent intentLogout = new Intent(MainActivity.this, LoginRegisterActivity.class);
                 intentLogout.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intentLogout.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intentLogout);

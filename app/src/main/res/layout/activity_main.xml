@@ -4,23 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/app_background"
+    android:padding="25dp"
     tools:context=".MainActivity">
+    
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Madat"
+        android:layout_centerHorizontal="true"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp">
+        android:layout_marginTop="500dp">
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Kasallik va Davo"
             android:id="@+id/illness_list_button"/>
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
-            android:text="Ciqish"
+            android:text="Chiqish"
             android:id="@+id/logout"/>
+
+
     </LinearLayout>
 </RelativeLayout>

@@ -4,41 +4,41 @@ import java.sql.Timestamp;
 
 public class User {
 
-    private String userName, userId, userSurname, userPassword, dataRegistration, userPhoneNumber;
+    private String name, id, surname, password, dataRegistration, phoneNumber;
 
     public User() {}
 
-    public User(String userName, String userId, String userSurname, String userPassword, String dataRegistration, String userPhoneNumber) {
-        this.userName = userName;
-        this.userId = userId;
-        this.userSurname = userSurname;
-        this.userPassword = userPassword;
+    public User(String name, String id, String surname, String password, String dataRegistration, String phoneNumber) {
+        this.name = name;
+        this.id = id;
+        this.surname = surname;
+        this.password = password;
         this.dataRegistration = dataRegistration;
-        this.userPhoneNumber = userPhoneNumber;
+        this.phoneNumber = phoneNumber;
 
     }
 
-    public String getmUserName() {
-        return userName;
+    public String getName() {
+        return name;
     }
 
-    public String getmUserId() {
-        return userId;
+    public String getId() {
+        return id;
     }
 
-    public String getUserSurname() {
-        return userSurname;
+    public String getSurname() {
+        return surname;
     }
 
-    public String getmUserPassword() {
-        return userPassword;
+    public String getPassword() {
+        return password;
     }
 
-    public String getmDateRegistration() {
+    public String getDateRegistration() {
         return dataRegistration;
     }
 
-    public String getmUserPhoneNumber() {
-        return userPhoneNumber;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 }
