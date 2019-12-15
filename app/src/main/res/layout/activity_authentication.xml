@@ -31,7 +31,6 @@
             android:layout_marginTop="20dp"
             android:drawablePadding="10dp"
             android:hint="Ismingizni kiriting"
-            android:inputType="phone"
             android:maxLength="20"/>
 
         <EditText

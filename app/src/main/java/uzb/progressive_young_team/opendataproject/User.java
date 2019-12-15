@@ -4,43 +4,41 @@ import java.sql.Timestamp;
 
 public class User {
 
-    private String mUserName, mUserId, mUserSurname, mUserPassword;
-    private Timestamp mDateRegistration;
-    private int mUserPhoneNumber;
+    private String userName, userId, userSurname, userPassword, dataRegistration, userPhoneNumber;
 
     public User() {}
 
-    public User(String mUserName, String mUserId, String mUserSurname, String mUserPassword, Timestamp mDateRegistration, int mUserPhoneNumber) {
-        this.mUserName = mUserName;
-        this.mUserId = mUserId;
-        this.mUserSurname = mUserSurname;
-        this.mUserPassword = mUserPassword;
-        this.mDateRegistration = mDateRegistration;
-        this.mUserPhoneNumber = mUserPhoneNumber;
+    public User(String userName, String userId, String userSurname, String userPassword, String dataRegistration, String userPhoneNumber) {
+        this.userName = userName;
+        this.userId = userId;
+        this.userSurname = userSurname;
+        this.userPassword = userPassword;
+        this.dataRegistration = dataRegistration;
+        this.userPhoneNumber = userPhoneNumber;
 
     }
 
     public String getmUserName() {
-        return mUserName;
+        return userName;
     }
 
     public String getmUserId() {
-        return mUserId;
+        return userId;
     }
 
-    public String getmUserSurname() {
-        return mUserSurname;
+    public String getUserSurname() {
+        return userSurname;
     }
 
     public String getmUserPassword() {
-        return mUserPassword;
+        return userPassword;
     }
 
-    public Timestamp getmDateRegistration() {
-        return mDateRegistration;
+    public String getmDateRegistration() {
+        return dataRegistration;
     }
 
-    public int getmUserPhoneNumber() {
-        return mUserPhoneNumber;
+    public String getmUserPhoneNumber() {
+        return userPhoneNumber;
     }
 }

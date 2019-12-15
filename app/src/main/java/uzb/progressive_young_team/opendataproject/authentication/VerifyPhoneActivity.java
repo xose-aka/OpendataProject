@@ -4,10 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import uzb.progressive_young_team.opendataproject.MainActivity;
 import uzb.progressive_young_team.opendataproject.R;
+import uzb.progressive_young_team.opendataproject.User;
 import uzb.progressive_young_team.opendataproject.illness_library.IllnessListActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -28,6 +30,8 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -35,14 +39,13 @@ import java.util.concurrent.TimeUnit;
 public class VerifyPhoneActivity extends AppCompatActivity {
 
     private String mVerificationCode;
-    private String mUserName, mUserSurname, mUserPassword;
+    private String mUserName, mUserSurname, mUserPassword, mPhoneNumber;
     //The edittext to input the code
     private EditText mUserEnteredCode;
 
     //firebase auth object
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
-    private CollectionReference usersRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,12 +58,11 @@ public class VerifyPhoneActivity extends AppCompatActivity {
         //getting mobile number from the previous activity
         //and sending the verification code to the number
         Intent intent = getIntent();
-        String phone_number = intent.getStringExtra("phone_number");
-        sendVerificationCode(phone_number);
-
+        mPhoneNumber = intent.getStringExtra("phone_number");
         mUserName = intent.getStringExtra("user_name");
         mUserSurname = intent.getStringExtra("user_surname");
         mUserPassword = intent.getStringExtra("password");
+        sendVerificationCode();
 
         //if the automatic sms detection did not work, user can also enter the code manually
         //so adding a click listener to the button
@@ -81,12 +83,15 @@ public class VerifyPhoneActivity extends AppCompatActivity {
 
     }
 
-    private void sendVerificationCode(String phone_number) {
+    private void sendVerificationCode() {
 
-        phone_number = ("+998" + phone_number);
+        Log.d("phone", mPhoneNumber);
+        Log.d("name", mUserName);
+        Log.d("surname", mUserSurname);
+        Log.d("password", mUserPassword);
 
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                phone_number,        // Phone number to verify
+                ("+998" + mPhoneNumber),        // Phone number to verify
                 60,                 // Timeout duration
                 TimeUnit.SECONDS,   // Unit of timeout
                 VerifyPhoneActivity.this,               // Activity (for callback binding)
@@ -147,7 +152,10 @@ public class VerifyPhoneActivity extends AppCompatActivity {
                             FirebaseUser firebaseUser = mAuth.getCurrentUser();
                             String userID = firebaseUser.getUid();
 
-//                            db.collection("users").document(userID).add();
+                            User user = new User(mUserName, userID, mUserSurname,
+                                    mUserPassword, (new SimpleDateFormat("yyyy.MM.dd 'at' HH:mm:ss" ).toString()), mPhoneNumber);
+
+                            db.collection("users").document(userID).set(user);
 
                             Intent intent = new Intent(VerifyPhoneActivity.this, MainActivity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
