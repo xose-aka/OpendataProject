@@ -38,7 +38,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:background="@color/colorPrimaryDark"
-        android:text="Registratsiya qilish"
+        android:text="Kirish"
         android:textAllCaps="false"
         android:textColor="#cdd8f1" />
 
