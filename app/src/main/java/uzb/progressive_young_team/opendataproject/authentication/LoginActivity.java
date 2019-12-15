@@ -10,9 +10,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -22,24 +25,29 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText mPhoneNumber, mPassword;
     private FirebaseFirestore db;
+    private FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        mPhoneNumber = (EditText)findViewById(R.id.phone_number);
-        mPassword = (EditText)findViewById(R.id.user_password);
+        mPhoneNumber = (EditText)findViewById(R.id.login_phone_number);
+        mPassword = (EditText)findViewById(R.id.login_user_password);
 
+        firebaseAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
 
-        findViewById(R.id.login_button).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.loginButton).setOnClickListener(new View.OnClickListener() {
 
-            String phoneNumber = mPhoneNumber.getText().toString().trim();
-            String password = mPassword.getText().toString().trim();
+            String phoneNumber, password;
 
             @Override
             public void onClick(View v) {
+
+                phoneNumber = mPhoneNumber.getText().toString();
+                password = mPassword.getText().toString();
+
                 if(phoneNumber.isEmpty()) {
                     mPhoneNumber.setError("Telefon raqamni kiriting!");
                     mPhoneNumber.requestFocus();
@@ -50,15 +58,16 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 } else {
                     db.collection("users")
-                            .whereEqualTo("userPhoneNumber", phoneNumber)
+                            .whereEqualTo("phoneNumber", phoneNumber)
                             .get()
                             .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                                 @Override
                                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
                                     if (task.isSuccessful()) {
                                         for (QueryDocumentSnapshot document : task.getResult()) {
-                                            if( phoneNumber.equals(document.getString("userPhoneNumber")) ) {
-                                                if( mPassword.equals(document.getString("userPassword")) ) {
+
+                                            if( phoneNumber.equals(document.getString("phoneNumber")) ) {
+                                                if( password.equals(document.getString("password")) ) {
                                                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
                                                 } else {
                                                     mPassword.setError("Noto'g'ri parol");

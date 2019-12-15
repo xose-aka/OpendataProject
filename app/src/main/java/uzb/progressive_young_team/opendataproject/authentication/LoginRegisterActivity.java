@@ -1,6 +1,7 @@
 package uzb.progressive_young_team.opendataproject.authentication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import uzb.progressive_young_team.opendataproject.MainActivity;
 import uzb.progressive_young_team.opendataproject.R;
 
 import android.content.Intent;
@@ -25,7 +26,7 @@ public class LoginRegisterActivity extends AppCompatActivity implements View.OnC
                 startActivity(new Intent(LoginRegisterActivity.this, AuthenticationActivity.class));
                 break;
             case R.id.login_button:
-
+                startActivity(new Intent(LoginRegisterActivity.this, LoginActivity.class));
                 break;
         }
     }
