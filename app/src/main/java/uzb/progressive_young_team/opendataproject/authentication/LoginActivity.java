@@ -32,6 +32,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        final SessionManager sessionManager = new SessionManager(this) ;
+
         mPhoneNumber = (EditText)findViewById(R.id.login_phone_number);
         mPassword = (EditText)findViewById(R.id.login_user_password);
 
@@ -68,6 +70,7 @@ public class LoginActivity extends AppCompatActivity {
 
                                             if( phoneNumber.equals(document.getString("phoneNumber")) ) {
                                                 if( password.equals(document.getString("password")) ) {
+                                                    sessionManager.createSession(phoneNumber, password);
                                                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
                                                 } else {
                                                     mPassword.setError("Noto'g'ri parol");

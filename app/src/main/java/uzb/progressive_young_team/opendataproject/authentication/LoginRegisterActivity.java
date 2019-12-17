@@ -10,10 +10,15 @@ import android.view.View;
 
 public class LoginRegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private SessionManager sessionManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_register);
+
+        sessionManager = new SessionManager(this);
+        sessionManager.checkLogin();
 
         findViewById(R.id.register_button).setOnClickListener(this);
         findViewById(R.id.login_button).setOnClickListener(this);

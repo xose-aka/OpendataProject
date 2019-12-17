@@ -160,33 +160,12 @@ public class VerifyPhoneActivity extends AppCompatActivity {
                             User user = new User(mUserName, userID, mUserSurname,
                                     mUserPassword, new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(timestamp), mPhoneNumber);
                             db.collection("users").document(userID).set(user);
-//                            db.collection("users").document(userID).set(user);
-//                            Map<String, Object> data = new HashMap<>();
-//                            data.put("name", "Tokyo");
-//                            data.put("country", "Japan");
-//
-//                            db.collection("users")
-//                                    .add(data)
-//                                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-//                                        @Override
-//                                        public void onSuccess(DocumentReference documentReference) {
-//                                            Log.d("firestore", "DocumentSnapshot written with ID: " + documentReference.getId());
-//                                        }
-//                                    })
-//                                    .addOnFailureListener(new OnFailureListener() {
-//                                        @Override
-//                                        public void onFailure(@NonNull Exception e) {
-//                                            Log.w("firestore", "Error adding document", e);
-//                                        }
-//                                    });
 
                             Intent intent = new Intent(VerifyPhoneActivity.this, MainActivity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(intent);
 
                         } else {
-
-                            //verification unsuccessful.. display an error message
 
                             String message = "Somthing is wrong, we will fix it soon...";
 

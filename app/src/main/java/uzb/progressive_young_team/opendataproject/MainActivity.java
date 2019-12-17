@@ -3,6 +3,7 @@ package uzb.progressive_young_team.opendataproject;
 import androidx.appcompat.app.AppCompatActivity;
 import uzb.progressive_young_team.opendataproject.authentication.AuthenticationActivity;
 import uzb.progressive_young_team.opendataproject.authentication.LoginRegisterActivity;
+import uzb.progressive_young_team.opendataproject.authentication.SessionManager;
 import uzb.progressive_young_team.opendataproject.illness_library.IllnessListActivity;
 
 import android.content.Intent;
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button mIllnessesListButton, logout;
     private FirebaseAuth firebaseAuth;
     private FirebaseUser firebaseUser;
+    SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
+        sessionManager = new SessionManager(this);
 
         mIllnessesListButton = (Button)findViewById(R.id.illness_list_button);
         logout = (Button)findViewById(R.id.logout);
@@ -43,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.logout:
                 FirebaseAuth.getInstance().signOut();
+                sessionManager.logout();
                 Intent intentLogout = new Intent(MainActivity.this, LoginRegisterActivity.class);
                 intentLogout.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intentLogout.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
