@@ -1,5 +1,6 @@
 package uzb.progressive_young_team.opendataproject.illness_library;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import uzb.progressive_young_team.opendataproject.R;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -18,18 +19,28 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.internal.InternalTokenProvider;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.Toast;
+import androidx.appcompat.widget.Toolbar;
 
 public class IllnessListActivity extends AppCompatActivity {
 
     private FirebaseFirestore db;
     private CollectionReference illnessRef;
     private IllnessAdapter adapter;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_illness_list);
+
+        toolbar = findViewById(R.id.illness_list_toolbar);
+        setSupportActionBar(toolbar);
+
+        if(getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
         db = FirebaseFirestore.getInstance();
         illnessRef = db.collection("Illness List");
@@ -69,5 +80,11 @@ public class IllnessListActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         adapter.stopListening();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        return super.onOptionsItemSelected(item);
     }
 }

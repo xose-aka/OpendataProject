@@ -30,8 +30,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         firebaseUser = firebaseAuth.getCurrentUser();
         sessionManager = new SessionManager(this);
 
-        mIllnessesListButton = (Button)findViewById(R.id.illness_list_button);
-        logout = (Button)findViewById(R.id.logout);
+        mIllnessesListButton = findViewById(R.id.illness_list_button);
+        logout = findViewById(R.id.logout);
 
         mIllnessesListButton.setOnClickListener(this);
         logout.setOnClickListener(this);
@@ -48,8 +48,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 FirebaseAuth.getInstance().signOut();
                 sessionManager.logout();
                 Intent intentLogout = new Intent(MainActivity.this, LoginRegisterActivity.class);
-                intentLogout.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intentLogout.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intentLogout.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
+                        Intent.FLAG_ACTIVITY_CLEAR_TASK |
+                        Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intentLogout);
                 break;
         }

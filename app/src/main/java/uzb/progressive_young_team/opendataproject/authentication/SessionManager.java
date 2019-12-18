@@ -6,15 +6,14 @@ import android.content.SharedPreferences;
 
 import java.util.HashMap;
 
-import uzb.progressive_young_team.opendataproject.Home;
 import uzb.progressive_young_team.opendataproject.MainActivity;
 
 public class SessionManager {
 
-    SharedPreferences sharedPreferences;
-    public SharedPreferences.Editor editor;
-    public Context context;
-    public static int PRIVATE_MODE = 0;
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
+    private Context context;
+    private static int PRIVATE_MODE = 0;
     private static final String PREF_NAME = "LOGIN";
     private static final String LOGIN = "IS_LOGIN";
     private static final String PASSWORD = "PASSWORD";
