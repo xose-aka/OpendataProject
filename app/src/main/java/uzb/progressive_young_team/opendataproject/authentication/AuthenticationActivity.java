@@ -1,6 +1,7 @@
 package uzb.progressive_young_team.opendataproject.authentication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import uzb.progressive_young_team.opendataproject.R;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,11 +11,19 @@ import android.widget.EditText;
 public class AuthenticationActivity extends AppCompatActivity {
 
     private EditText mPhoneNumber, mUserName, mUserSurname, mUserPassword;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_authentication);
+
+        toolbar = findViewById(R.id.authentication_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(getString(R.string.action_bar_authentication));
+        if(getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
         mPhoneNumber = findViewById(R.id.phone_number);
         mUserName = findViewById(R.id.user_name);

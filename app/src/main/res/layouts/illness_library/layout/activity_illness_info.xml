@@ -7,6 +7,13 @@
     android:orientation="vertical"
     tools:context=".illness_library.IllnessInfoActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/illness_info_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ToolBarStyle">
+    </androidx.appcompat.widget.Toolbar>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

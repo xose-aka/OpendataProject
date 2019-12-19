@@ -17,11 +17,14 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".authentication.LoginActivity">
+        <activity android:name=".authentication.LoginActivity"
+            android:parentActivityName=".authentication.LoginRegisterActivity">
         </activity>
-        <activity android:name=".authentication.AuthenticationActivity"/>
+        <activity android:name=".authentication.AuthenticationActivity"
+            android:parentActivityName=".authentication.LoginRegisterActivity"/>
 
-        <activity android:name=".illness_library.IllnessInfoActivity" />
+        <activity android:name=".illness_library.IllnessInfoActivity"
+            android:parentActivityName=".illness_library.IllnessListActivity"/>
         <activity android:name=".illness_library.IllnessListActivity"
             android:parentActivityName=".MainActivity">
         </activity>

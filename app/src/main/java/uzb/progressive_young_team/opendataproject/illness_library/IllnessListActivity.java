@@ -37,7 +37,7 @@ public class IllnessListActivity extends AppCompatActivity {
 
         toolbar = findViewById(R.id.illness_list_toolbar);
         setSupportActionBar(toolbar);
-
+        getSupportActionBar().setTitle(getString(R.string.action_bar_illness_list));
         if(getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }

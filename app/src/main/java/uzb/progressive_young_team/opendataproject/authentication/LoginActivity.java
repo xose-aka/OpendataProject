@@ -2,6 +2,7 @@ package uzb.progressive_young_team.opendataproject.authentication;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import uzb.progressive_young_team.opendataproject.MainActivity;
 import uzb.progressive_young_team.opendataproject.R;
 
@@ -14,8 +15,6 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -25,19 +24,25 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText mPhoneNumber, mPassword;
     private FirebaseFirestore db;
-    private FirebaseAuth firebaseAuth;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        toolbar = findViewById(R.id.login_activity_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(getString(R.string.action_bar_login));
+        if(getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
         final SessionManager sessionManager = new SessionManager(this) ;
 
         mPhoneNumber = (EditText)findViewById(R.id.login_phone_number);
         mPassword = (EditText)findViewById(R.id.login_user_password);
 
-        firebaseAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
 
         findViewById(R.id.loginButton).setOnClickListener(new View.OnClickListener() {
@@ -72,6 +77,7 @@ public class LoginActivity extends AppCompatActivity {
                                                 if( password.equals(document.getString("password")) ) {
                                                     sessionManager.createSession(phoneNumber, password);
                                                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                                    finish();
                                                 } else {
                                                     mPassword.setError("Noto'g'ri parol");
                                                     mPassword.requestFocus();
