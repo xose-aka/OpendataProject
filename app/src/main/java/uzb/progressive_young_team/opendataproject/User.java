@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 public class User {
 
-    private String name, id, surname, password, dataRegistration, phoneNumber;
+    private String name, id, surname, password, dataRegistration, phoneNumber, imageURL;
 
     public User() {}
 
@@ -40,5 +40,9 @@ public class User {
 
     public String getPhoneNumber() {
         return phoneNumber;
+    }
+
+    public String getImageURL() {
+        return imageURL;
     }
 }

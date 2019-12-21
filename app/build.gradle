@@ -22,6 +22,7 @@ android {
         main {
             res.srcDirs =
                     [
+                            'src/main/res/layouts/chat',
                             'src/main/res/layouts/illness_library',
                             'src/main/res/layouts/basic_layouts',
                             'src/main/res/layouts/authentication',

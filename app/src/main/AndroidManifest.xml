@@ -9,6 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".chat.DoctorInfoActivity"
+            android:parentActivityName=".chat.DoctorsListActivity"></activity>
+        <activity android:name=".chat.DoctorsListActivity"
+            android:parentActivityName=".MainActivity"/>
         <activity android:name=".authentication.LoginRegisterActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,21 +20,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".authentication.LoginActivity"
-            android:parentActivityName=".authentication.LoginRegisterActivity">
-        </activity>
-        <activity android:name=".authentication.AuthenticationActivity"
-            android:parentActivityName=".authentication.LoginRegisterActivity"/>
-
-        <activity android:name=".illness_library.IllnessInfoActivity"
-            android:parentActivityName=".illness_library.IllnessListActivity"/>
-        <activity android:name=".illness_library.IllnessListActivity"
-            android:parentActivityName=".MainActivity">
-        </activity>
-        <activity android:name=".authentication.VerifyPhoneActivity" />
         <activity
-            android:name=".MainActivity" />
+            android:name=".authentication.LoginActivity"
+            android:parentActivityName=".authentication.LoginRegisterActivity" />
+        <activity
+            android:name=".authentication.AuthenticationActivity"
+            android:parentActivityName=".authentication.LoginRegisterActivity" />
+        <activity
+            android:name=".illness_library.IllnessInfoActivity"
+            android:parentActivityName=".illness_library.IllnessListActivity" />
+        <activity
+            android:name=".illness_library.IllnessListActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".authentication.VerifyPhoneActivity" />
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

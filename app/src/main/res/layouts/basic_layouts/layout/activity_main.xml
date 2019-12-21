@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/app_background"
     android:padding="25dp"
+    android:orientation="vertical"
     tools:context=".MainActivity">
     
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Madad"
-        android:layout_centerHorizontal="true"/>
+        android:textAlignment="center"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="500dp">
+        android:layout_marginTop="500dp"
+        android:orientation="horizontal">
 
         <Button
             android:layout_width="wrap_content"
@@ -31,8 +33,17 @@
             android:layout_marginLeft="30dp"
             android:text="Chiqish"
             android:id="@+id/logout"/>
-
-
     </LinearLayout>
-</RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/doctor_list_button"
+            android:text="Doctor list"/>
+    </LinearLayout>
+</LinearLayout>
 

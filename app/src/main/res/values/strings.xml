@@ -3,4 +3,5 @@
     <string name="action_bar_illness_list">Kasalliklar ro\'yxati</string>
     <string name="action_bar_login">Kirish</string>
     <string name="action_bar_authentication">Ro\'yxatdan o\'tish</string>
+    <string name="action_bar_doctor_list">Doktorlar ro\'yxati</string>
 </resources>

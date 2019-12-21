@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import uzb.progressive_young_team.opendataproject.authentication.AuthenticationActivity;
 import uzb.progressive_young_team.opendataproject.authentication.LoginRegisterActivity;
 import uzb.progressive_young_team.opendataproject.authentication.SessionManager;
+import uzb.progressive_young_team.opendataproject.chat.DoctorsListActivity;
 import uzb.progressive_young_team.opendataproject.illness_library.IllnessListActivity;
 
 import android.content.Intent;
@@ -16,7 +17,6 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button mIllnessesListButton, logout;
     private FirebaseAuth firebaseAuth;
     private FirebaseUser firebaseUser;
     SessionManager sessionManager;
@@ -30,19 +30,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         firebaseUser = firebaseAuth.getCurrentUser();
         sessionManager = new SessionManager(this);
 
-        mIllnessesListButton = findViewById(R.id.illness_list_button);
-        logout = findViewById(R.id.logout);
-
-        mIllnessesListButton.setOnClickListener(this);
-        logout.setOnClickListener(this);
+        findViewById(R.id.illness_list_button).setOnClickListener(this);
+        findViewById(R.id.logout).setOnClickListener(this);
+        findViewById(R.id.doctor_list_button).setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.illness_list_button:
-                Intent intent = new Intent(MainActivity.this, IllnessListActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(MainActivity.this, IllnessListActivity.class));
+                break;
+            case R.id.doctor_list_button:
+                startActivity(new Intent(MainActivity.this, DoctorsListActivity.class));
                 break;
             case R.id.logout:
                 FirebaseAuth.getInstance().signOut();

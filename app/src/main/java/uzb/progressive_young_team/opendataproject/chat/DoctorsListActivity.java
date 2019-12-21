@@ -1,68 +1,69 @@
-package uzb.progressive_young_team.opendataproject.illness_library;
+package uzb.progressive_young_team.opendataproject.chat;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import uzb.progressive_young_team.opendataproject.R;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import uzb.progressive_young_team.opendataproject.R;
+import uzb.progressive_young_team.opendataproject.illness_library.Illness;
+import uzb.progressive_young_team.opendataproject.illness_library.IllnessAdapter;
+import uzb.progressive_young_team.opendataproject.illness_library.IllnessInfoActivity;
+import uzb.progressive_young_team.opendataproject.illness_library.IllnessListActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 
-import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
-import com.google.firebase.internal.InternalTokenProvider;
+import com.google.firebase.firestore.QuerySnapshot;
 
-import android.view.MenuItem;
-import android.widget.Toast;
-import androidx.appcompat.widget.Toolbar;
-
-public class IllnessListActivity extends AppCompatActivity {
+public class DoctorsListActivity extends AppCompatActivity {
 
     private FirebaseFirestore db;
-    private CollectionReference illnessRef;
-    private IllnessAdapter adapter;
+    private CollectionReference doctorRef;
+    private DoctorAdapter adapter;
     private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_illness_list);
+        setContentView(R.layout.activity_doctors_list);
 
-        toolbar = findViewById(R.id.illness_list_toolbar);
+        toolbar = findViewById(R.id.doctor_list_toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(getString(R.string.action_bar_illness_list));
+        getSupportActionBar().setTitle(getString(R.string.action_bar_doctor_list));
         if(getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
         db = FirebaseFirestore.getInstance();
-        illnessRef = db.collection("Illness List");
+        doctorRef = db.collection("doctors");
         setUpRecyclerView();
     }
 
     private void setUpRecyclerView() {
-        Query query = illnessRef.orderBy("title", Query.Direction.DESCENDING);
+        Query query = doctorRef.orderBy("name");
 
-        FirestoreRecyclerOptions<Illness> options = new FirestoreRecyclerOptions.Builder<Illness>()
-                .setQuery(query, Illness.class)
+        FirestoreRecyclerOptions<Doctor> options = new FirestoreRecyclerOptions.Builder<Doctor>()
+                .setQuery(query, Doctor.class)
                 .build();
-        adapter = new IllnessAdapter(options);
-        RecyclerView recyclerView = findViewById(R.id.illnesses_list_recycleview);
+        adapter = new DoctorAdapter(options);
+        RecyclerView recyclerView = findViewById(R.id.doctor_list_recycleview);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
-        adapter.setOnItemClickListener(new IllnessAdapter.OnItemClickListener() {
+        adapter.setOnItemClickListener(new DoctorAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
 //                Toast.makeText(IllnessListActivity.this, "Title:" + documentSnapshot.getString("title"), Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(IllnessListActivity.this, IllnessInfoActivity.class);
-                intent.putExtra("title", documentSnapshot.getString("title"));
-                intent.putExtra("description", documentSnapshot.getString("description"));
+                Intent intent = new Intent(DoctorsListActivity.this, DoctorInfoActivity.class);
+                intent.putExtra("name", documentSnapshot.getString("name"));
                 startActivity(intent);
             }
         });
