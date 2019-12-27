@@ -1,4 +1,4 @@
-package uzb.progressive_young_team.opendataproject.chat;
+package uzb.progressive_young_team.opendataproject.doctor;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;

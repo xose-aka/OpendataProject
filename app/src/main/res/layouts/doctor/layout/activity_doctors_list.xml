@@ -3,22 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context=".chat.DoctorInfoActivity">
+    android:orientation="vertical"
+    tools:context=".doctor.DoctorsListActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/doctor_info_toolbar"
+        android:id="@+id/doctor_list_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/ToolBarStyle">
     </androidx.appcompat.widget.Toolbar>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/doctor_name"
-        android:layout_marginTop="60dp"
-        android:layout_gravity="center" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/doctor_list_recycleview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </LinearLayout>

@@ -1,16 +1,14 @@
 package uzb.progressive_young_team.opendataproject;
 
 import androidx.appcompat.app.AppCompatActivity;
-import uzb.progressive_young_team.opendataproject.authentication.AuthenticationActivity;
 import uzb.progressive_young_team.opendataproject.authentication.LoginRegisterActivity;
 import uzb.progressive_young_team.opendataproject.authentication.SessionManager;
-import uzb.progressive_young_team.opendataproject.chat.DoctorsListActivity;
+import uzb.progressive_young_team.opendataproject.doctor.DoctorsListActivity;
 import uzb.progressive_young_team.opendataproject.illness_library.IllnessListActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;

@@ -22,6 +22,7 @@ android {
         main {
             res.srcDirs =
                     [
+                            'src/main/res/layouts/doctor',
                             'src/main/res/layouts/chat',
                             'src/main/res/layouts/illness_library',
                             'src/main/res/layouts/basic_layouts',
@@ -45,4 +46,5 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'com.google.android.material:material:1.0.0'
+    implementation 'de.hdodenhof:circleimageview:3.0.1'
 }

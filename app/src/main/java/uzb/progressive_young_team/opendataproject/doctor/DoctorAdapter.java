@@ -1,8 +1,9 @@
-package uzb.progressive_young_team.opendataproject.chat;
+package uzb.progressive_young_team.opendataproject.doctor;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
@@ -24,6 +25,11 @@ public class DoctorAdapter extends FirestoreRecyclerAdapter<Doctor, DoctorAdapte
     @Override
     protected void onBindViewHolder(@NonNull DoctorAdapter.DoctorHolder holder, int position, @NonNull Doctor model) {
         holder.textViewDoctorName.setText(model.getName());
+        if(model.getImageURL() != null) {
+            if (model.getImageURL().equals("default")) {
+                holder.doctorImageView.setImageResource(R.mipmap.ic_launcher_round);
+            }
+        }
     }
 
     @NonNull
@@ -36,10 +42,12 @@ public class DoctorAdapter extends FirestoreRecyclerAdapter<Doctor, DoctorAdapte
     class DoctorHolder extends RecyclerView.ViewHolder {
 
         TextView textViewDoctorName;
+        ImageView doctorImageView;
 
         public DoctorHolder(@NonNull View itemView) {
             super(itemView);
             textViewDoctorName = itemView.findViewById(R.id.doctor_name);
+            doctorImageView = itemView.findViewById(R.id.doctor_circle_image);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

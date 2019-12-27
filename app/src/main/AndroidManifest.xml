@@ -9,10 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".chat.DoctorInfoActivity"
-            android:parentActivityName=".chat.DoctorsListActivity"></activity>
-        <activity android:name=".chat.DoctorsListActivity"
-            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".chat.MessageActivity"></activity>
+        <activity
+            android:name=".doctor.DoctorInfoActivity"
+            android:parentActivityName=".doctor.DoctorsListActivity" />
+        <activity
+            android:name=".doctor.DoctorsListActivity"
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".authentication.LoginRegisterActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

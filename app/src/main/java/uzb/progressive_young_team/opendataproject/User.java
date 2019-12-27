@@ -15,7 +15,7 @@ public class User {
         this.password = password;
         this.dataRegistration = dataRegistration;
         this.phoneNumber = phoneNumber;
-
+        this.imageURL = "default";
     }
 
     public String getName() {
