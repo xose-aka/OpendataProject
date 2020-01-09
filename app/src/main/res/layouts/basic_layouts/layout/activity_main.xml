@@ -58,8 +58,8 @@
                 android:layout_height="120dp"
                 android:orientation="vertical"
                 tools:ignore="Suspicious0dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="15dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:background="@drawable/menu_icon_bg_white_green"
                 android:padding="16dp"
                 android:id="@+id/illness_list_button"
@@ -78,8 +78,8 @@
                 android:layout_width="0dp"
                 android:layout_height="120dp"
                 android:orientation="vertical"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 tools:ignore="Suspicious0dp"
                 android:background="@drawable/menu_icon_bg_purple"
                 android:padding="16dp"
@@ -98,8 +98,8 @@
                 android:layout_width="0dp"
                 android:layout_height="120dp"
                 android:orientation="vertical"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 tools:ignore="Suspicious0dp"
                 android:background="@drawable/main_icon_bg_white_purple"
                 android:padding="16dp"
@@ -125,8 +125,8 @@
                 android:layout_height="120dp"
                 android:orientation="vertical"
                 tools:ignore="Suspicious0dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="15dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:background="@drawable/menu_icon_bg_yellow"
                 android:padding="16dp">
 
@@ -136,14 +136,31 @@
                     android:src="@drawable/chat_icon"/>
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:orientation="vertical"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                tools:ignore="Suspicious0dp"
+                android:background="@drawable/menu_icon_bg_pale_wood"
+                android:padding="16dp"
+                android:clickable="true">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/library_icon"/>
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="120dp"
                 android:orientation="vertical"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 tools:ignore="Suspicious0dp"
                 android:background="@drawable/menu_icon_bg_red"
                 android:padding="16dp"
