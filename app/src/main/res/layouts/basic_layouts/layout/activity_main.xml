@@ -71,6 +71,8 @@
                     android:src="@drawable/chat_icon"/>
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_weight="1"
                 android:layout_width="0dp"
@@ -82,6 +84,25 @@
                 android:background="@drawable/menu_icon_bg_purple"
                 android:padding="16dp"
                 android:id="@+id/doctor_list_button"
+                android:clickable="true">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/library_icon"
+                    android:clickable="false"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:orientation="vertical"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="20dp"
+                tools:ignore="Suspicious0dp"
+                android:background="@drawable/main_icon_bg_white_purple"
+                android:padding="16dp"
                 android:clickable="true">
 
                 <ImageView
