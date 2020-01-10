@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".chat.MessageActivity"></activity>
+        <activity android:name=".forum.MainForumActivity"></activity>
+        <activity android:name=".chat.MessageActivity" />
         <activity
             android:name=".doctor.DoctorInfoActivity"
             android:parentActivityName=".doctor.DoctorsListActivity" />
